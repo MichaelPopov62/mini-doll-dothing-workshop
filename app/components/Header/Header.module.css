@@ -1,0 +1,58 @@
+.header {
+  padding: 6px 20px;
+  background-color:#70bce2;
+  display: flex;
+  justify-content:space-between;
+  align-items: center; 
+}
+/* Новий стиль для заголовка */
+.headerTitle {
+  font-family: var(--font-lobster), sans-serif;
+  font-size: 36px;
+  color: #e9da35;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+  padding-bottom: 6px;
+   line-height: 1.1;
+}
+.headerTitle:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  height: 90px; /* висота логотипу */
+   width: auto;
+  object-fit: contain;
+}
+.nav{
+  display: flex;
+  gap:16px;
+}
+
+.navLink {
+  margin: 0 10px;
+  text-decoration: none;
+  color:#e9da35;
+   font-weight: 500;
+  transition: color 0.2s;
+  
+}
+
+.navLink:hover {
+  color: #2b3ada;
+}
+
+
+/* На мобільному  */
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .headerTitle {
+    font-size: 28px;
+  }
+    .logo {
+    height: 70px;
+  }
+}

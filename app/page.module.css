@@ -1,0 +1,149 @@
+/* app/page.module.css */
+
+.container {
+  max-width: 1200px;  /* ширина контенту */
+  margin: 0 auto;     /* по центру */
+  padding: 20px;
+  
+
+}
+.homePage {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  url("/images/sdoll-back2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* щоб фон займав всю висоту екрана */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.title {
+   font-family: var(--font-poppins), sans-serif;
+  text-align: center;
+  font-size: 36px;
+  color: #e9da35;
+  font-weight: 700; /* або font-weight: bold; */
+    background: linear-gradient(90deg, #ffea00, #ff9f00);
+     background-clip: text;  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  margin-bottom: 40px;
+}
+.subtitle {
+  font-family: var(--font-poppins), sans-serif;
+  text-align: center;
+  font-size: 24px;
+  color: #ffd700; /* золотистий відтінок */
+   background: linear-gradient(90deg, #ffd700, #ffa500);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  position: relative;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  word-wrap: break-word; /* перенос слів, щоб не виходили за контейнер */
+}
+
+/* Адаптивність */
+
+/* Мобільні (до 480px) */
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Планшети (481px - 768px) */
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+}
+
+/* Десктопи (769px - 1200px) */
+@media (max-width: 1200px) {
+  .subtitle {
+    font-size: 22px;
+    margin-bottom: 28px;
+  }
+}
+
+
+.grid {
+  display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;           /* відступи між блоками */
+   width: 100%;
+  max-width: 1000px; /* щоб не розтягувалось занадто */
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.85); /* трохи прозорий фон */
+  border-radius: 10px;
+  color: #5cc2ee;
+  padding: 20px;
+  text-align: center;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+/* На мобільному */
+@media (max-width: 480px){
+  .title{font-size: 22px;
+    margin-bottom: 20px;
+}
+  .card {
+    height: 200px;
+    padding: 15px;
+  }
+ .grid {
+    gap: 15px;
+  }}
+  
+/* Планшети (481px - 768px) */
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    height: 220px;
+    padding: 18px;
+  }
+
+  .grid {
+    gap: 15px;
+    grid-template-columns: 1fr; /* 1 картка в ряд */
+  }
+}
+
+/* Невеликі десктопи (769px - 1024px) */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .card {
+    height: 240px;
+  }
+
+  .grid {
+    gap: 18px;
+    
+     grid-template-columns: repeat(2, 1fr); /* 2 картки в ряд */
+  }
+}

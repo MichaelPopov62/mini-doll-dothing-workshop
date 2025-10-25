@@ -1,0 +1,47 @@
+.card {
+   width: 90%;
+  background: rgb(192, 231, 62);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  max-width: 500px;
+   min-height: 400px;
+  text-align: center;
+}
+
+.image {
+  border-radius: 12px;
+  margin: 15px 0;
+}
+
+.title {
+  font-size: 28px;
+  color: #333;
+}
+
+.text {
+  font-size: 18px;
+  color: #444;
+}
+.backButton {
+  margin-top: 120px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: var(--font-poppins), sans-serif;
+  background-color: #ffd700; /* золотистий */
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.backButton:hover {
+  background-color: #ffbf00; /* трохи темніший при наведенні */
+}
+.arrow {
+  margin-right: 8px; /* відступ між стрілкою і текстом */
+  font-size: 18px; /* розмір стрілки */
+  font-weight: 700;  
+}
+

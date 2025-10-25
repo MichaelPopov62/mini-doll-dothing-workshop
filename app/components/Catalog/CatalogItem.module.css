@@ -1,0 +1,32 @@
+/* CatalogItem.module.css */
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.image {
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.name {
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: blue;
+}
+
+.price {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
