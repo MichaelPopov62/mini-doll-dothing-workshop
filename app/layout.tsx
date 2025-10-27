@@ -1,4 +1,4 @@
-
+/*загальний layout сайту*/
 import { Geist, Geist_Mono, Lobster_Two, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header/Header";
