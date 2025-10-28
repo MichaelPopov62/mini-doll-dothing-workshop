@@ -6,12 +6,20 @@ export type ChildrenProps = {
 };
 //Модель продукту
 export type Product = {
-  id: number;
+  id: number | string;
   name: string;
   description: string;
   price: number;
   images: string;
    category?: string;
+};
+//для фронтенду 
+export type OrderItem = {
+  id: number | string;          // унікальний ідентифікатор картки
+    productName: string;       // назва продукту
+  price: number;       // ціна за одиницю
+  quantity: number;    // кількість
+  total: number;      // необов'язково: price * quantity
 };
 export type PageProps = {
   params?: { id: string };
@@ -25,12 +33,7 @@ export type CardProps = {
   href: string;        // Посилання для Link
 };
 
-// export type CatalogItemProps = {
-//   id:number,
-//   name: string;
-//   image:string;//одна картка
-//   price:number
-// };
+
 // Тип для сторінки продукту з динамічним id
 export type ItemPageProps = {
   params: {
@@ -53,3 +56,5 @@ export type Order = {
   comment?: string;
   createdAt: Date;
 };
+export type Section = "users" | "orders"| "products" | "settings";
+

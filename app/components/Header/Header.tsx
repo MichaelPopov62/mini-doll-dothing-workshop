@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./Header.module.css"
 import Image from "next/image";
+import { useOrders } from "@/app/context/OrderContext";//тимчасово
+
 
 export default function Header() {
+   const { orders } = useOrders();
+  console.log("🔎 Поточні замовлення:", orders);//для реоеввірки
   return (
     <header className={styles.header}>
        {/* Логотип зліва */}

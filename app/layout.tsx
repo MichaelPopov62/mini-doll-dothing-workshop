@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import styles from "./page.module.css";
 import { ChildrenProps } from "@/types/types";
+import { OrderProvider } from "@/app/context/OrderContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,9 +39,11 @@ export default function RootLayout({children}:ChildrenProps) {
   return (
     <html lang="uk">
       <body className={`${geistSans.variable} ${lobster.variable} ${geistMono.variable} ${poppins.variable}`}>
+        <OrderProvider>
         <Header />
         <main className={styles.container}>{children}</main>
-      <Footer/>  
+      <Footer/>
+      </OrderProvider>
       </body>
       
     </html>

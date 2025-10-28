@@ -26,7 +26,7 @@
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background-color: #3b82f6;
-  color: white;
+  color: rgb(232, 233, 239);
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -35,4 +35,8 @@
 
 .navButton:hover {
   background-color: #2563eb;
+}
+/* активна кнопка */
+.active {
+  background-color: #1e40af; /* темніший синій */
 }

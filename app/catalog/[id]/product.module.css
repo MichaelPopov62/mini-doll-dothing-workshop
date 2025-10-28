@@ -1,34 +1,84 @@
+
 .card {
-   width: 90%;
-  background: rgb(192, 231, 62);
+  width: 90%;
+  max-width: 500px;
+  min-height: 400px;
+  background: #c0e73e;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 30px;
-  max-width: 500px;
-   min-height: 400px;
   text-align: center;
+  margin: 2rem auto; /* центрування картки */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgb(25, 33, 192)
 }
 
 .image {
   border-radius: 12px;
   margin: 15px 0;
+  object-fit: cover;
 }
 
 .title {
   font-size: 28px;
   color: #333;
+  margin-bottom: 0.5rem;
 }
 
 .text {
   font-size: 18px;
   color: #444;
+  margin: 5px 0;
 }
+
+.quantity {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantityInput {
+  width: 60px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  text-align: center;
+}
+
+.orderButton {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+}
+
+.orderButton:hover {
+  background-color: #1e40af;
+}
+.orderListButton{
+   background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.2s;
+
+}
+
 .backButton {
-  margin-top: 120px;
   padding: 10px 20px;
   font-size: 16px;
-  font-family: var(--font-poppins), sans-serif;
-  background-color: #ffd700; /* золотистий */
+  background-color: #ffd700;
   color: #000;
   border: none;
   border-radius: 8px;
@@ -37,11 +87,11 @@
 }
 
 .backButton:hover {
-  background-color: #ffbf00; /* трохи темніший при наведенні */
-}
-.arrow {
-  margin-right: 8px; /* відступ між стрілкою і текстом */
-  font-size: 18px; /* розмір стрілки */
-  font-weight: 700;  
+  background-color: #ffbf00;
 }
 
+.arrow {
+  margin-right: 8px;
+  font-size: 18px;
+  font-weight: 700;  
+}

@@ -4,7 +4,7 @@ export default function ProductLayout({ children }: { children: ReactNode }) {
   return (
     <div
       style={{
-        backgroundColor: "#fff9c4",
+        backgroundColor: "#eddd46ff",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
