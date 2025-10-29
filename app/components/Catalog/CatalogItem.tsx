@@ -1,3 +1,4 @@
+/*картка товару в каталозі*/
 // components/Catalog/CatalogItem.tsx
 import Link from "next/link";
 import styles from "./CatalogItem.module.css";
@@ -13,6 +14,9 @@ interface CatalogItemProps {
 
 export default function CatalogItem({id,name,image,price} : CatalogItemProps) {
   return (
+    
+    <Link href={`/catalog/${id}`} className={styles.link}>
+      {/* Посилання на сторінку товару */}
     <div className={styles.card}>
       {/* Зображення */}
       <Image 
@@ -26,10 +30,9 @@ export default function CatalogItem({id,name,image,price} : CatalogItemProps) {
       <h3 className={styles.name}>{name}</h3>
        {/* Ціна */}
       <p className={styles.price}>{price} грн</p>
-       {/* Посилання на сторінку товару */}
-      <Link href={`/catalog/${id}`} className={styles.link}>
-        Детальніше
+       <span className={styles.text}>Бажаєшь інформаціі тисни картку</span>
+       </div>
       </Link>
-    </div>
+   
   );
 }

@@ -1,4 +1,5 @@
 
+/*спільний для фронта і API*/
 
 
 export interface User {

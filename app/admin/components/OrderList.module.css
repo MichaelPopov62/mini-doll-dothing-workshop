@@ -1,0 +1,76 @@
+.orderList {
+  /* контейнер списку замовлень */
+  display: flex;
+  flex-direction: column;
+  color: blue;
+ 
+}
+
+/* .title {
+  margin-bottom: 1rem;
+  color: blue;
+} */
+
+.orderUl {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.orderCard {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #5a8ed7ff;
+}
+
+.deleteBtn {
+  margin-left: 10px;
+  background: yellow;
+  color: blue;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.deleteBtn:hover {
+  background: #ffea00;
+}
+
+.btnContainer {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+}
+
+.returnBtn {
+  background: yellow;
+  color: blue;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.returnBtn:hover {
+  background: #ffea00;
+}
+
+.clearBtn {
+  /* margin-top: 4px; */
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearBtn:hover {
+  background: #cc0000;
+}

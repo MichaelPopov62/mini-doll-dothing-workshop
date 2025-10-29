@@ -1,12 +1,17 @@
-//Це сторінка каталогу — тобто список усіх виробів.
-//Вона імпортує дані (products) і для кожного викликає компонент CatalogItem.//
+/*Це сторінка каталогу — тобто список усіх виробів.сторінка списку всіх товарів
+Вона імпортує дані (products) і для кожного викликає компонент CatalogItem.
+Це сторінка списку товарів (каталог).
+Вона:показує меню з колекціями;
+фільтрує товари;
+виводить картки через CatalogItem.*/
+
 
 "use client"; // Щоб працювали useState та динаміка
 
 import { useState } from "react";
 import styles from "./catalog.module.css";
 import { products } from "@/app/data/products";
-import CatalogItem from "../components/Catalog/CatalogItem";
+import CatalogItem from "@/app/components/Catalog/CatalogItem";
 
 export const collections = [
   "Майстерня",

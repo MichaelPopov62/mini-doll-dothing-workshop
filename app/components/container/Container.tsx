@@ -1,6 +1,6 @@
-import styles from './Contener.module.css';
+import styles from '@/app/components/container/Container.module.css';
 import {ChildrenProps} from "@/types/types"
 
-export default function Contener({children}:ChildrenProps) {
-  return <div className={styles.contener}>{children}</div>;
+export default function Container({children}:ChildrenProps) {
+  return <div className={styles.container}>{children}</div>;
 }

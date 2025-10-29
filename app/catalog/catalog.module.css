@@ -23,8 +23,11 @@
 .sidebar {
   width: 220px;
   background-color: #f0f0f0;
+  border: 1px solid #0c04e0;
   padding: 15px;
   border-radius: 10px;
+      /* Додано тінь */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .sidebar ul {
@@ -38,16 +41,18 @@
   padding: 10px 12px;
   margin-bottom: 8px;
   background-color: #fff;
-  color: #280ce1;
+  color: #260cc9;
+  font-weight: bold; 
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
 }
 
 .sidebar li:hover {
-  background-color: #72519d;
+  background-color: #3413d9;
   color: #fff;
 }
+
 
 .active {
   background-color: #70bce2;

@@ -1,48 +1,10 @@
-// import styles from "./page.module.css";
-// import Link from "next/link";
-
-
-// export default function HomePage() {
-//   return (
-//   <div className={styles.homePage}>
-//     <div className={styles.container}>
-//       <h1 className={styles.title}>Майстерня одягу для ляльок</h1>
-
-//       <div className={styles.grid}>
-//         <Link href="/catalog?collection=Майстерня">
-//         <div className={styles.card}>Майстерня</div>
-//         </Link>
-//         <Link href="/catalog?collection=Зразок%20виробів-низ">
-//         <div className={styles.card}> Зразок виробів-низ</div>
-//         </Link>
-//         <Link href="/catalog?collection=Зразок%20виробів-верх">
-//         <div className={styles.card}>Зразок виробів-верх</div>
-//         </Link>
-//         <Link href="/catalog?collection=Зразок%20виробів-взуття">
-//         <div className={styles.card}>Зразок виробів-взуття</div>
-//         </Link>
-//         <Link href="/catalog?collection=Зрозок%20лялок">
-//         <div className={styles.card}>Зрозок лялок</div>
-//         </Link>
-//         <Link href="/catalog?collection=Зразок%20лялок-літо-весна">
-//         <div className={styles.card}>Зрахок лялок-літо-весна</div> 
-//         </Link>
-//         <Link href="/catalog?collection=Зразок%20лялок-осінь-зима">        <div className={styles.card}>Зразок лялок-осінь-зима</div>
-//         </Link>
-//         <Link href="/catalog?collection=Упаковки">
-//         <div className={styles.card}>Упаковки</div>
-//         </Link>
-      
-//       </div>
-//     </div>
-//     </div>
-  
-//   );
-// }
 
 import styles from "./page.module.css";
 import Link from "next/link";
 import { PageProps, CardProps } from "@/types/types";
+import "modern-normalize";
+import Container from "./components/container/Container";
+
 
 // Статичні дані
 const pageData: PageProps = {
@@ -62,6 +24,7 @@ const pageData: PageProps = {
 
 export default function HomePage() {
   return (
+    <Container>
     <div className={styles.homePage}>
       <div className={styles.container}>
         <h1 className={styles.title}>{pageData.title}</h1>
@@ -76,6 +39,8 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+    </Container>
+    
   );
 }
 

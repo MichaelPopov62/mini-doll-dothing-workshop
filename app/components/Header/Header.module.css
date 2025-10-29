@@ -4,7 +4,10 @@
   display: flex;
   justify-content:space-between;
   align-items: center; 
+  /* Градієнт від центру до країв */
+  background: radial-gradient(circle, #70bce2 0%, #1c7abf 100%);
 }
+
 /* Новий стиль для заголовка */
 .headerTitle {
   font-family: var(--font-lobster), sans-serif;
