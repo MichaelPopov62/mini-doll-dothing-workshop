@@ -19,7 +19,7 @@ export type OrderItem = {
     productName: string;       // назва продукту
   price: number;       // ціна за одиницю
   quantity: number;    // кількість
-  total?: number;      // необов'язково: price * quantity
+  total: number;      //  price * quantity
 };
 export type PageProps = {
   params?: { id: string };
