@@ -5,7 +5,8 @@
   justify-content:space-between;
   align-items: center; 
   /* Градієнт від центру до країв */
-  background: radial-gradient(circle, #70bce2 0%, #1c7abf 100%);
+  background: radial-gradient(circle, #70bce2 0%, #1c7abf 100%),
+  
 }
 
 /* Новий стиль для заголовка */
@@ -21,12 +22,46 @@
 .headerTitle:hover {
   transform: scale(1.05);
 }
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none; /* прибирає підкреслення посилання */
+}
+.logoWrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  
+}
+
 
 .logo {
-  height: 90px; /* висота логотипу */
-   width: auto;
-  object-fit: contain;
+  
+  width: 100%;
+  height: 100%;
+ display: block;
+  transition: transform 0.3s ease;
 }
+
+.logo:hover {
+  transform: scale(1.1);
+}
+.logoText {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 15px;
+}
+.logoTextYellow {
+  color: #ffd700; /* жовтий */
+}
+.logoTextBlue {
+  color: #0b3d91; /* темно-блакитний */
+}
+
+
 .nav{
   display: flex;
   gap:16px;

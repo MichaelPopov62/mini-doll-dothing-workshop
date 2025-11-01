@@ -6,10 +6,12 @@
   padding: 16px;
 } */
 .homePage {
+  background-color: #ff9f00;
   background-image: linear-gradient(to bottom, rgba(0,0, 0, 0.5), rgba(0, 0, 0, 0.8)),
   url("/images/sdoll-back2.png");
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: 50% 50%;
   background-repeat: repeat-x;
   min-height: 100vh; /* щоб фон займав всю висоту екрана */
   display: flex;

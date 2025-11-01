@@ -6,15 +6,35 @@ import Image from "next/image";
 import { useOrders } from "@/app/context/OrderContext";//тимчасово
 
 
+
 export default function Header() {
    const { orders } = useOrders();
   console.log("🔎 Поточні замовлення:", orders);//для реоеввірки
   return (
     <header className={styles.header}>
+      <Link href="/" className={styles.logoContainer} aria-label="Ляльковий Handmade — головна">
+      
        {/* Логотип зліва */}
-        <Image src="/images/logo.png" alt="Логотип" width={150} height={150} className={styles.logo}/>
-        <h1 className={styles.headerTitle}>МініОдяГ • Handmade
-</h1>
+       <div className={styles.logoWrapper}>
+        <Image
+          src="/images/icons-doll.svg"
+          width={80}
+          height={80}
+          alt="Логотип Ляльковий Handmade"
+          className={styles.logo}
+        />
+       
+        </div>
+        {/* Надпис справа */}
+        <span className={styles.logoText}>
+          <span className={styles.logoTextYellow}>Ляльковий</span>{" "}
+          <span className={styles.logoTextBlue}>handmade</span>
+        </span>
+        
+      </Link>
+
+        <h1 className={styles.headerTitle}>МініОдяГ  Handmade</h1>
+
       {/* Навігація справа */}
 <nav className={styles.nav}>
 <Link href="/" className={styles.navLink}>Головна</Link>

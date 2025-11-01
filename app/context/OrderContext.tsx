@@ -25,7 +25,7 @@ export const OrderProvider = ({ children }: { children: ReactNode }) => {
           o.id === item.id ?  {
                 ...o,
                 quantity: o.quantity + item.quantity,
-                total: o.quantity + item.quantity,
+                total: (o.total || 0) + (item.total?? item.price * item.quantity)
                }
              : o
         );
