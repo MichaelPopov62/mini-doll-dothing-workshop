@@ -27,8 +27,13 @@ export default function LoginPage() {
       setMessage(res.data.message); // показати повідомлення від сервера
       // Можеш зберегти токен, якщо він є
       if (res.data.token){
+         console.log("Token знайдено, зберігаю в localStorage...");
       localStorage.setItem("token", res.data.token);
-     router.push("/dashboard"); }  // редірект після успішного логіну
+      console.log("Redirecting to /dashboard...");
+     router.push("/dashboard"); }
+      else {
+      console.warn("❗ Token відсутній у відповіді сервера");
+    }  // редірект після успішного логіну
     } catch (err) { const error= err as AxiosError<{ message: string }>;
       setMessage(error.response?.data?.message || "Помилка сервера");}
     

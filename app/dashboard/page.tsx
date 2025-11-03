@@ -16,28 +16,136 @@
 
 
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./dashboardStyles.module.css"
 import { products } from "@/app/data/products";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import { AxiosError}  from "axios";
 
+// Тип для замовлення на фронтенді
 interface Order {
   id: number;
   productId: number;
   quantity: number;
   date: string;
   status: string;
+
+}// Тип для даних, що приходять з бекенду
+interface BackendOrder {
+  id: number;
+  productName: string;
+  quantity: number;
+  total?: number;
+  price?: number;
+  date?: string;
+  status?: string;
+}
+// Тип відповіді бекенду (FIX)
+interface OrdersResponse {
+  orders: BackendOrder[]; // якщо бекенд повертає { orders: [...] }
 }
 
-const mockOrders: Order[] = [
-  { id: 1, productId: 3, quantity: 2, date: "2025-10-27", status: "Доставлено" },
-  { id: 2, productId: 10, quantity: 1, date: "2025-10-25", status: "В обробці" },
-  { id: 3, productId: 25, quantity: 3, date: "2025-10-20", status: "Скасовано" },
-];
 export default function DashboardPage() {
-  const [orders] = useState(mockOrders);
-   const handleClick = (action: string) => {
-     console.log("Button clicked:", action);
+   const router = useRouter();
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [sortType, setSortType] = useState <"date" | "status">("date"); // тип сортування
+
+
+
+  // --- отримання замовлень з бекенду
+   useEffect(() => {  
+
+    const fetchOrders = async () => {
+      setLoading(true);
+      try{
+       // --- доступ до localStorage лише на клієнті
+    const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+    if (!token) {
+      setOrders([]);
+      setLoading(false);
+      return;
+    }
+      // Виклик API (FIX)
+        const res = await axios.get<OrdersResponse>("/api/orders", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+    
+      console.log("Backend orders:", res.data); 
+      const backendOrders: BackendOrder[] = Array.isArray(res.data)
+          ? res.data
+          : Array.isArray((res.data as OrdersResponse).orders)
+           ? (res.data as OrdersResponse).orders
+           : [];
+           console.log("Backend orders:", res.data);
+
+        // перетворюємо на наш Order тип
+          const mappedOrders: Order[] =  backendOrders.map((o) => ({
+        id: o.id,
+        productId: products.find(p => p.name === o.productName)?.id ?? 0,
+        quantity: o.quantity,
+        date: o.date ?? new Date().toISOString().slice(0,10), // тимчасова дата
+        status: o.status ?? "В обробці", // якщо статус не прийшов
+      }));
+      setOrders(mappedOrders);
+    }
+    catch (err: unknown) {
+      // перевіряємо, чи це AxiosError
+      if (axios.isAxiosError(err)) {
+         const axiosErr: AxiosError = err;
+        console.error(axiosErr.message);
+      } else if (err instanceof Error) {
+        console.error(err.message);
+      } else {
+        console.error("Невідома помилка");
+      }
+      setError("Не вдалося завантажити замовлення");
+      setOrders([]); // очищення при помилці
+    } finally {
+      setLoading(false);
+    }
   };
+
+  fetchOrders();}, []);
+    
+  // --- дії кнопок
+   const handleClick = (action: string) => {
+    switch (action) {
+      case "catalog":
+        router.push("/catalog");
+        break;
+      case "edit":
+        router.push("/profile/edit");
+        break;
+      case "logout":  if (typeof window !== "undefined") {
+        localStorage.removeItem("token");}
+  
+        router.push("/login");
+        break;
+    }
+  };
+   // --- сортування
+   const sortOrders = (newSortType:"date" | "status") => {
+    const sorted = [...orders];
+    if (newSortType === "date"){
+      sorted.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+    }
+    if (newSortType === "status"){
+      sorted.sort((a, b) => a.status.localeCompare(b.status));}
+
+    setOrders(sorted);
+     setSortType(newSortType); 
+    
+  };
+
+  if (loading) return <p>Завантаження замовлень...</p>;
+  if (error) return <p>{error}</p>;
+
+
   
   return (
     <div className={styles.container}>
@@ -55,6 +163,16 @@ export default function DashboardPage() {
         </button>
       </div>
       <h2 className={styles.subtitle}>Історія замовлень</h2>
+       <div className={styles.sortGroup}>
+        <label>Сортувати: </label>
+        <select
+         value={sortType} 
+         onChange={(e) => sortOrders(e.target.value as "date" | "status")}>
+          
+          <option value="date">За датою</option>
+          <option value="status">За статусом</option>
+        </select>
+      </div>
 
       <table className={styles.table}>
         <thead>
@@ -78,6 +196,14 @@ export default function DashboardPage() {
               <td  className={styles.tableCell}>{product ? product.price * order.quantity : "-"}</td>
               <td className={styles.tableCell}>{order.date}</td>
                 <td className={styles.tableCell}>{order.status}</td>
+                <td className={styles.tableCell}>
+                   <button
+                    className={styles.detailBtn}
+                    onClick={() => router.push(`/orders/${order.id}`)}
+                  >
+                    Деталі
+                  </button>
+                </td>
             </tr>
               );
 })}

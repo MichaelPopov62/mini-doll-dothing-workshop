@@ -5,7 +5,7 @@ import cors from "cors";
 import productRoutes from "./routes/productRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
-
+console.log("✅ Імпортовано authRoutes:", !!authRoutes);
 dotenv.config();
 console.log("✅ MongoDB connected");
 
@@ -14,11 +14,12 @@ const DB_URI = `mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_URL}
 const app = express();
 
 
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
-// підключення роутів
-app.use("/api/auth", authRoutes);
-app.use("/api/products", productRoutes);
+
+
+
+
 
 app.get("/", (req, res) => {
   res.send("Backend працює!");
@@ -28,4 +29,10 @@ mongoose.connect(DB_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch(err => console.log("❌ DB error:", err));
 
-app.listen(PORT || 9090, () => console.log(`Server running on port ${PORT}`));
+  // підключення роутів
+app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+
+app.listen(PORT || 9090, () =>{ console.log(`Server running on port ${PORT}`)});
+
+
